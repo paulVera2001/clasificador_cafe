@@ -33,7 +33,7 @@ def clasificar():
 
     filename = secure_filename(file.filename)
     filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-    filepath = filepath.replace("\\", "/") 
+    #filepath = filepath.replace("\\", "/") 
     file.save(filepath)
     #print(f"Imagen guardada en: {filepath}")
     
