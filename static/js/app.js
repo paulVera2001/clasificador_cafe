@@ -45,7 +45,8 @@ document.addEventListener("DOMContentLoaded", function () {
     
             fetch("/clasificar", {
                 method: "POST",
-                body: formData
+                body: formData,
+                timeout: 60000  // Esperar hasta 60 segundos
             })
             .then(response => response.json())
             .then(data => {
