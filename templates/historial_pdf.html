@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema Clasificador de Granos de Café</title>
+    <link rel="stylesheet" href="file:///C:/Users/User/clasificador_cafe/static/css/historial_pdf.css">
+</head>
+<body>
+    <h2>Historial</h2>
+    <p>Fecha actual: <span>{{ fecha_actual }}</span></p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Resultado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in history %}
+            <tr>
+                <td><img src="file:///C:/Users/User/clasificador_cafe/{{ item.file }}"></td>
+                <td class="table-nombre-imagen">{{ item.name }}</td>
+                <td>{{ item.result }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

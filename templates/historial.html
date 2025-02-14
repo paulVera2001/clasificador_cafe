@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Clasificador de Granos de Café</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Sistema Clasificador de Granos de Café</h1>
+    <h2>Historial</h2>
+
+    <button onclick="location.href='/main'" style="float: right;">Regresar</button>
+
+    <button id="btnBorrarHistorial" style="float: right;" 
+        {% if session['history'] and session['history']|length > 0 %} 
+            enabled 
+        {% else %} 
+            disabled 
+        {% endif %}>
+        Borrar Historial
+    </button>
+
+    <button onclick="location.href='/exportar_pdf'" style="float: right;" 
+        {% if session['history'] and session['history']|length > 0 %} 
+            enabled 
+        {% else %} 
+            disabled 
+        {% endif %}>
+        Exportar
+    </button>
+
+    <table border="1">
+        <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Resultado</th>
+        </tr>
+        {% for item in history %}
+        <tr>
+            <td><img src="{{ item.file }}" width="90" height="90"></td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.result }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

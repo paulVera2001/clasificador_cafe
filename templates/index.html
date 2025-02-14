@@ -1,0 +1,72 @@
+<!-- Página de bienvenida -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Clasificador de Granos de Café</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sistema Clasificador de Granos de Café</h1>
+            <p class="subtitulo">¿Cómo funciona el sistema?</p>
+        </header>
+        
+        <section class="content">
+            <!-- Parte 1: Pasos -->
+            <div class="steps">
+                <div class="step">
+                    <img src="{{ url_for('static', filename='assets/paso1.png') }}" alt="Paso 1">
+                    <div class="step-text">
+                        <p class="step-title">Paso 01</p>
+                        <p>Cargar una imagen del grano de café</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <img src="{{ url_for('static', filename='assets/paso2.png') }}" alt="Paso 2">
+                    <div class="step-text">
+                        <p class="step-title">Paso 02</p>
+                        <p>Clasificar la imagen</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <img src="{{ url_for('static', filename='assets/paso3.png') }}" alt="Paso 3">
+                    <div class="step-text">
+                        <p class="step-title">Paso 03</p>
+                        <p>Visualizar el resultado</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Parte 2: Flecha -->           
+            <div class="steps">
+                <div class="step">
+                    <img src="{{ url_for('static', filename='assets/flecha.png') }}" alt="Flecha">
+                </div>
+            </div>
+
+            <!-- Parte 3: GIF + Botón -->
+            <div class="demo">
+                <div class="gif-container">
+                    <img src="{{ url_for('static', filename='assets/imagen con extencion gif.gif') }}" alt="Demostración del sistema">
+                </div>
+                <p>¿Listo para empezar?</p>
+                <a href="/main" class="btn">Ir al Sistema</a>
+            </div>
+            
+        </section>
+        
+        <img src="{{ url_for('static', filename='assets/robot-superior-derecha.jpg') }}" class="decor-top" alt="Robot decorativo superior">
+        <img src="{{ url_for('static', filename='assets/robot-inferior-izquierdo.jpg') }}" class="decor-bottom" alt="Robot decorativo inferior">
+
+        <img src="{{ url_for('static', filename='assets/borde decorativo derecho.png') }}" class="decor-cafe-derecho" alt="Cafe decorativo derecho">
+        <img src="{{ url_for('static', filename='assets/borde decorativo inferior.png') }}" class="decor-cafe-inferior" alt="Cafe decorativo inferior">
+        <img src="{{ url_for('static', filename='assets/borde decorativo izquierdo.png') }}" class="decor-cafe-izquierdo" alt="cafe decorativo izquierdo">
+
+    </div>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

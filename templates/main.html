@@ -1,0 +1,59 @@
+<!-- Página  principal del sistema -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Clasificador de Granos de Café</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="containerMain">
+        <!-- Título del sistema -->
+        <h1>Sistema Clasificador de Granos de Café</h1>
+
+        <!-- Botón para subir imagen -->
+        <input type="file" id="inputImagen" accept="image/*" hidden>
+        <label for="inputImagen" class="btn-upload">Subir Imagen</label>
+
+        <!-- Contenedor de la vista previa de la imagen -->
+        <div class="image-preview" id="preview">
+            <p>Visualización previa de la imagen</p>
+        </div>
+
+        <!-- Botón de clasificación (Deshabilitado por defecto) -->
+        <button id="btnClasificar" class="btn-classify" disabled>Clasificar</button>
+
+        <!-- Contenedor del resultado -->
+        <div class="resultado-container">
+            <p id="resultadoEtiqueta" class="resultado-etiqueta">Resultado de la Clasificación:</p>
+            <p id="resultadoTexto" class="resultado-texto"></p>
+        </div>
+
+        <button id="btnHistorial" onclick="location.href='/historial'" 
+            {% if session['history'] and session['history']|length > 0 %} 
+                enabled 
+            {% else %} 
+                disabled 
+            {% endif %}>
+            Ver Historial
+        </button>
+
+
+        <!-- Elementos decorativos -->
+        <img src="{{ url_for('static', filename='assets/robot-superior-derecha.jpg') }}" class="decor-top-main" alt="Robot decorativo superior">
+        <img src="{{ url_for('static', filename='assets/robot-inferior-izquierdo.jpg') }}" class="decor-bottom-main" alt="Robot decorativo inferior">
+
+        <div class="decorations">
+            <img src="{{ url_for('static', filename='assets/granos-de-cafe-izquierda.png') }}" class="coffee-left" alt="Decoración lateral izquierda">
+            <img src="{{ url_for('static', filename='assets/granos-de-cafe-derecha.png') }}" class="coffee-right" alt="Decoración lateral derecha">
+        </div>
+    </div>
+
+    <!-- Mensaje de error al subir una extensión no permitida-->
+    <p id="errorMensaje" class="error-message" style="display: none;"></p>
+    
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    
+</body>
+</html>

@@ -1,0 +1,318 @@
+/* Importar fuente personalizada (si es necesario) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+    background-color: #f8f3dc; /* Color de fondo */
+    font-family: 'Arial';/* Fuente */
+    color: #7a4e20; /* Color del texto */
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal */
+.container {
+    width: 90%; /*ancho de la interfaz*/
+    margin: 10px auto;/*espacio de arriba hacia abajo de la interfaz*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+/* Estilos del título */
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #a87029;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenedor para los pasos y la demo */
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px; /* Espaciado entre los elementos */
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Sección de pasos en formato vertical */
+.steps {
+    display: flex;
+    flex-direction: column; /* Cambia a disposición vertical */
+    /*align-items: center;
+    justify-content: center;*/ /*COMENTADO TEMPORALMENTE*/
+    gap: 20px;
+}
+
+/* Cada paso */
+.step {
+    display: flex;
+    align-items: left;
+    gap: 10px;
+}
+
+
+.step img {
+    width: 120px; /* Ajustar tamaño de imágenes */
+    height: auto;
+    border-radius: 10px;
+}
+
+.step-text {
+    text-align: left;
+    font-size: 1.2rem; /*Maximiza o minimiza el contenido*/
+    padding: 10px 15px; /*Separa la alineación izquierda entre la imagen y el texto */
+}
+
+.step-title {
+    font-weight: bold;
+    background-color: #d4af37;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Contenedor del GIF y botón */
+.demo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 35%;
+    padding: 5px;
+}
+
+.gif-container img {
+    width: 550px;
+    height: auto;
+    border: 10px solid #a87029;
+    border-radius: 10px;
+}
+
+.demo p {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+/* Botón "Ir al sistema" */
+.btn {
+    background-color: #6b8e23;
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #556b2f;
+}
+
+/* Imágenes decorativas (robots y granos de café) */
+.decor-top {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 100px;
+}
+
+.decor-bottom {
+    position: absolute;
+    top: 635px;
+    bottom: 10px;
+    left: 10px;
+    width: 100px;
+}
+.decor-cafe-izquierdo {
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    width: 60px;
+}
+.decor-cafe-derecho {
+    position: absolute;
+    top: 160px;
+    right: 0px;
+    width: 50px;
+}
+.decor-cafe-inferior {
+    position: absolute;
+    top: 650px;
+    left: 150px;
+    width: 700px;
+}
+
+/*=============================================================================*/
+/*CSS PARA LA EL ARCHVIO main.html*/
+/* Contenedor principal */
+.containerMain {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente */
+    width: 90%; /* Opcional: Puedes ajustar el ancho si es necesario */
+    margin: 10px auto; /* Centra horizontalmente sin afectar el eje vertical */
+    text-align: center;
+    background-color: #f8f3dc;
+    position: relative;
+}
+
+
+/* Estilo del título */
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #a87029;
+}
+
+.subtitulo {
+    font-size: 1.5rem;
+}
+/* Botón de subir imagen */
+.btn-upload {
+    background-color: #6b8e23;
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    margin: 15px 0;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-upload:hover {
+    background-color: #556b2f;
+}
+
+/* Contenedor de la imagen cargada */
+.image-preview {
+    width: 350px;
+    height: 320px;
+    border: 5px solid #a87029;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: gray;
+    font-size: 1.5rem;
+    margin: 15px 0;
+}
+
+/* Botón de clasificación */
+.btn-classify {
+    background-color: #c2e3a7;
+    color: #5a5a5a;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: not-allowed;
+    border: none;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-classify:enabled {
+    background-color: #6b8e23;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-classify:enabled:hover {
+    background-color: #556b2f;
+}
+
+/* Imágenes decorativas */
+.decor-top-main {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 100px;
+}
+
+.decor-bottom-main {
+    position: absolute;
+    top: 510px;
+    bottom: 10px;
+    left: 10px;
+    width: 100px;
+}
+/**/
+.coffee-left {
+    position: absolute;
+    left: 120px;/*separación del lado izquierdo hacia la imagen*/
+    top: 60%;/*Posición hacia arriba*/
+    transform: translateY(-50%);
+    width: 200px;/*Tamaño de la imagen*/
+}
+
+.coffee-right {
+    position: absolute;
+    right: 120px;/*separación del lado derecho hacia la imagen*/
+    top: 60%;
+    transform: translateY(-50%);
+    width: 200px;
+}
+/*=========================================================*/
+/*ESTILOS PARA LOS MENSAJES DE ERROR y RESULTADO*/
+.error-message { /*mensaje de error cuando la extensión de la imagen es incorrecta*/
+    display: none;
+    width: 50%; /* Reducir el ancho al 50% */
+    background-color: red;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    position: absolute;
+    bottom: 20px; /* Ajuste en la parte inferior */
+    left: 50%; /* Centrar horizontalmente */
+    transform: translateX(-50%); /* Corrección para centrar */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Pequeña sombra para resaltar */
+}
+
+
+/* Estilos para la etiqueta y el texto del resultado */
+.resultado-container {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.resultado-etiqueta {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #7a4e20;
+    display: none; /* Oculto por defecto */
+}
+
+.resultado-texto {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #a87029;
+    display: none; /* Oculto por defecto */
+}
+
+table {
+    width: 80%;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+img {
+    display: block;
+    margin: auto;
+}
+/*=========================================================*/

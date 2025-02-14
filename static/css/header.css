@@ -1,0 +1,25 @@
+.header-table {
+    width: 100%;
+    border-bottom: 2px solid black;
+    text-align: center;
+    padding-top: 10mm; /* Espacio extra arriba del encabezado */
+}
+
+.header-table td {
+    vertical-align: middle;
+    padding: 5px;
+}
+
+.header-table img {
+    height: 60px; /* Ajusta el tamaño de las imágenes */
+    width: auto;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+body {
+    margin-top: 10mm;
+}
