@@ -76,8 +76,10 @@ def exportar_pdf():
     # Ruta del PDF de salida
     pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], 'historial.pdf')
 
-    # Ruta de wkhtmltopdf
-    config = pdfkit.configuration(wkhtmltopdf=r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe")
+    # Ruta de wkhtmltopdf para Windows
+    #config = pdfkit.configuration(wkhtmltopdf=r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe")
+    # Ruta de wkhtmltopdf para Linux
+    config = pdfkit.configuration(wkhtmltopdf='/usr/bin/wkhtmltopdf')
 
     # Configuración para el PDF
     options = {
