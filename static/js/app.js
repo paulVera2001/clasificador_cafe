@@ -55,9 +55,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     resultadoTexto.style.display = "block";
                     resultadoTexto.textContent = data.resultado;
                     btnHistorial.removeAttribute("disabled");
-                } else {
-                    errorMensaje.textContent = data.error;
-                    errorMensaje.style.display = "block";
                 }
             })
             .catch(error => {

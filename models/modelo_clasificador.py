@@ -1,4 +1,3 @@
-#import tensorflow as tf
 from tensorflow.keras.models import load_model
 import numpy as np
 from keras.utils import load_img, img_to_array
@@ -8,7 +7,6 @@ modelo = None  # Evita cargarlo al inicio
 def predecir_clase(imagen_path):
     global modelo
     if modelo is None:  # Cargar solo si aún no se ha cargado
-        #modelo = tf.keras.models.load_model("models/Modelo_clasificador_cafe_cnn_camPro_117a500muestrasParaCadaDefecto.h5")
         # Cargar el modelo una sola vez al inicio para evitar recargarlo en cada solicitud
         modelo = load_model("models/Modelo_clasificador_cafe_cnn_camPro_117a500muestrasParaCadaDefecto.h5")
         

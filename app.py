@@ -25,25 +25,18 @@ def main():
 
 @app.route("/clasificar", methods=["POST"])
 def clasificar():
-    """Maneja la carga de imágenes, validaciones y clasificación."""
-    if "file" not in request.files:
-        return jsonify({"error": "No se envió ninguna imagen"}), 400
-
+    """Maneja la carga de imágenes y clasificación."""
     file = request.files["file"]
-    if file.filename == "":
-        return jsonify({"error": "No se seleccionó ninguna imagen"}), 400
 
     filename = secure_filename(file.filename)
     filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-    
-    filepath = str(Path(filepath))  # Asegura una ruta compatible con el SO
-    #filepath = filepath.replace("\\", "/") 
+    filepath = str(Path(filepath))  # Asegura una ruta compatible con el SO. Cambia \ por /
     file.save(filepath)
     #print(f"Imagen guardada en: {filepath}")
     
     resultado = predecir_clase(filepath)
 
-    #session.clear() #Borrar datos de sesion
+    #session.clear() #Borrar datos de sesion para pruebas en servidor local
     
     # Guardar en historial (sin base de datos)
     if 'history' not in session:
@@ -53,8 +46,6 @@ def clasificar():
     session.modified = True
     
     return jsonify({"resultado": resultado}), 200
-
-
 
 
 @app.route('/historial')
@@ -117,12 +108,6 @@ def borrar_historial():
     
     return jsonify({"message": "Historial eliminado correctamente"}), 200
 
-'''
-if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
-    print(f"Ejecutando en el puerto: {port}")
-    app.run(host="0.0.0.0", port=port, debug=True)
-'''
 
 if __name__ == '__main__':
     app.run(debug=True)
