@@ -84,9 +84,9 @@ def exportar_pdf():
     # Configuración para el PDF
     options = {
         'enable-local-file-access': '',
-        'header-html': request.url_root + 'static/uploads/header_rendered.html',  # Usa el header personalizado
+        #'header-html': request.url_root + 'static/uploads/header_rendered.html',  # Usa el header personalizado
         #'header-html': request.url_root + temp_header_path,  # Usa el header personalizado
-        #'header-html': temp_header_path,  # Usa el header personalizado
+        'header-html': 'static/uploads/header_rendered.html',  # Usa el header personalizado
         'header-spacing': '5',
         'footer-right': 'Página [page] de [topage]',
         'footer-spacing': '5',
