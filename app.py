@@ -21,6 +21,7 @@ def index():
 def main():
     return render_template("main.html")
 
+
 @app.route("/clasificar", methods=["POST"])
 def clasificar():
     """Maneja la carga de imágenes, validaciones y clasificación."""
@@ -49,6 +50,9 @@ def clasificar():
     session.modified = True
     
     return jsonify({"resultado": resultado}), 200
+
+
+
 
 @app.route('/historial')
 def historial():
