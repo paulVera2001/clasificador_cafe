@@ -43,10 +43,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const formData = new FormData();
             formData.append("file", file);
     
-            fetch("https://clasificador-cafe.onrender.com/clasificar", {
+            fetch("/clasificar", {
                 method: "POST",
-                body: formData,
-                timeout: 60000  // Esperar hasta 60 segundos
+                body: formData
             })
             .then(response => response.json())
             .then(data => {

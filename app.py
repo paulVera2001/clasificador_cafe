@@ -7,6 +7,7 @@ import os
 import shutil
 import pdfkit
 from datetime import datetime
+from pathlib import Path
 
 app = Flask(__name__)
 app.secret_key = 'clave_secreta'  # Necesario para usar sesiones
@@ -34,6 +35,8 @@ def clasificar():
 
     filename = secure_filename(file.filename)
     filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+    
+    filepath = str(Path(filepath))  # Asegura una ruta compatible con el SO
     #filepath = filepath.replace("\\", "/") 
     file.save(filepath)
     #print(f"Imagen guardada en: {filepath}")
