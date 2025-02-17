@@ -88,8 +88,8 @@ def exportar_pdf():
         'enable-local-file-access': '',
         #'header-html': 'file:///' + temp_header_path.replace("\\", "/"),
         #'header-spacing': '5',
-        'footer-right': '[page] de [topage]',
-        'footer-spacing': '5',
+        #'footer-right': '[page] de [topage]',
+        #'footer-spacing': '5',
         'margin-top': '25mm',  # Ajusta espacio para el header
         'margin-bottom': '15mm',
         'page-size': 'A4',
