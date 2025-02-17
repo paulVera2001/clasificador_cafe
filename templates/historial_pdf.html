@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Sistema Clasificador de Granos de Café</title>
-    <link rel="stylesheet" href="{{ request.url_root }}static/css/header.css">
+    <img src="{{ url_for('static', filename='css/header.css') }}">
+
 </head>
 <body>
     <h2>Historial</h2>
@@ -20,7 +21,8 @@
         <tbody>
             {% for item in history %}
             <tr>
-                <td><img src="{{ request.url_root }}static/uploads/{{ item.name }}" width="90" height="90"></td>
+
+                <td><img src="{{ url_for('static', filename='uploads/'+ item.name) }}"></td>
                 <td class="table-nombre-imagen">{{ item.name }}</td>
                 <td>{{ item.result }}</td>
             </tr>

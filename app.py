@@ -64,13 +64,13 @@ def exportar_pdf():
     rendered_html = render_template('historial_pdf.html', history=history, fecha_actual=fecha_actual)
 
     # Guardar el HTML renderizado en un archivo temporal
-    temp_html_path = os.path.join('static', 'uploads', 'historial_pdf_rendered.html')
+    temp_html_path = os.path.join(app.static_folder, 'uploads', 'historial_pdf_rendered.html')
     with open(temp_html_path, "w", encoding="utf-8") as f:
         f.write(rendered_html)
 
     # Renderizar header.html con la fecha actual
     rendered_header = render_template('header.html', fecha_actual=fecha_actual)
-    temp_header_path = os.path.join('static', 'uploads', 'header_rendered.html')
+    temp_header_path = os.path.join(app.static_folder, 'uploads', 'header_rendered.html')
     with open(temp_header_path, "w", encoding="utf-8") as f:
         f.write(rendered_header)
 
