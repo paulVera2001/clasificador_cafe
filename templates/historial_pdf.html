@@ -21,7 +21,7 @@
             {% for item in history %}
             <tr>
 
-                <td><img src="file:///{{ app_root_path  }}/static/uploads/{{ item.name }}"></td>
+                <td><img src="file:///{{ url_root  }}/static/uploads/{{ item.name }}"></td>
                 <td class="table-nombre-imagen">{{ item.name }}</td>
                 <td>{{ item.result }}</td>
             </tr>
