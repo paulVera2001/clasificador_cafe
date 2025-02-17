@@ -103,7 +103,7 @@ def exportar_pdf():
     }
 
     # Generar el PDF
-    pdfkit.from_file(temp_html_path, pdf_path, configuration=config, options=options)
+    pdfkit.from_file(temp_html_path, pdf_path, configuration=config)
 
     return send_file(pdf_path, as_attachment=True, download_name="historial.pdf")
 
