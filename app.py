@@ -91,10 +91,6 @@ def exportar_pdf():
     # Configuración para el PDF
     options = {
         'enable-local-file-access': '',
-        'header-html': temp_header_path,
-        'header-spacing': '5',
-        'footer-right': '[page] de [topage]',
-        'footer-spacing': '5',
         'margin-top': '25mm',  # Ajusta espacio para el header
         'margin-bottom': '15mm',
         'page-size': 'A4',
@@ -103,7 +99,7 @@ def exportar_pdf():
     }
 
     # Generar el PDF
-    pdfkit.from_file(temp_html_path, pdf_path, configuration=config)
+    pdfkit.from_file(temp_html_path, pdf_path, configuration=config, options=options)
 
     return send_file(pdf_path, as_attachment=True, download_name="historial.pdf")
 
