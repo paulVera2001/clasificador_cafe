@@ -60,16 +60,19 @@ def exportar_pdf():
     history = session.get('history', [])
     fecha_actual = datetime.now().strftime("%d/%m/%Y")
 
-    # Renderizar historial_pdf.html con los datos
-    rendered_html = render_template('historial_pdf.html', history=history, fecha_actual=fecha_actual)
+    # Obtener el root path de la aplicación
+    app_root_path = app.root_path.replace("\\", "/")  # Asegura compatibilidad en Windows/Linux
 
+    # Renderizar historial_pdf.html con los datos
+    rendered_html = render_template('historial_pdf.html', history=history, fecha_actual=fecha_actual, app_root_path=app_root_path)
+    
     # Guardar el HTML renderizado en un archivo temporal
     temp_html_path = os.path.join(app.static_folder, 'uploads', 'historial_pdf_rendered.html')
     with open(temp_html_path, "w", encoding="utf-8") as f:
         f.write(rendered_html)
 
     # Renderizar header.html con la fecha actual
-    rendered_header = render_template('header.html', fecha_actual=fecha_actual)
+    rendered_header = render_template('header.html', fecha_actual=fecha_actual, app_root_path=app_root_path)
     temp_header_path = os.path.join(app.static_folder, 'uploads', 'header_rendered.html')
     with open(temp_header_path, "w", encoding="utf-8") as f:
         f.write(rendered_header)
