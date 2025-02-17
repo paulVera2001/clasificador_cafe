@@ -71,10 +71,12 @@ def exportar_pdf():
     
     # Guardar HTMLs
     temp_html_path = os.path.join(app.static_folder, 'uploads', 'historial_pdf_rendered.html')
+    temp_html_path = os.path.abspath(temp_html_path).replace("\\", "/")
     with open(temp_html_path, "w", encoding="utf-8") as f:
         f.write(rendered_html)
 
     temp_header_path = os.path.join(app.static_folder, 'uploads', 'header_rendered.html')
+    temp_header_path = os.path.abspath(temp_header_path).replace("\\", "/")
     with open(temp_header_path, "w", encoding="utf-8") as f:
         f.write(rendered_header)
 
@@ -89,14 +91,15 @@ def exportar_pdf():
     # Configuración para el PDF
     options = {
         'enable-local-file-access': '',
-        'header-html': temp_header_path.replace("\\", "/"),
+        'header-html': temp_header_path,
         'header-spacing': '5',
         'footer-right': '[page] de [topage]',
         'footer-spacing': '5',
         'margin-top': '25mm',  # Ajusta espacio para el header
         'margin-bottom': '15mm',
         'page-size': 'A4',
-        'dpi': 300
+        'dpi': 300,
+        'quiet': False  # Esto mostrará errores de wkhtmltopdf
     }
 
     # Generar el PDF
