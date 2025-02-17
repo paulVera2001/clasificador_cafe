@@ -70,26 +70,26 @@ def exportar_pdf():
     rendered_header = render_template('header.html', fecha_actual=fecha_actual, app_root_path=app_root_path)
     
     # Guardar HTMLs
-    temp_html_path = os.path.join(app.static_folder, 'uploads', 'historial_pdf_rendered.html').replace("\\", "/")
+    temp_html_path = os.path.join(app.static_folder, 'uploads', 'historial_pdf_rendered.html')
     with open(temp_html_path, "w", encoding="utf-8") as f:
         f.write(rendered_html)
 
-    temp_header_path = os.path.join(app.static_folder, 'uploads', 'header_rendered.html').replace("\\", "/")
+    temp_header_path = os.path.join(app.static_folder, 'uploads', 'header_rendered.html')
     with open(temp_header_path, "w", encoding="utf-8") as f:
         f.write(rendered_header)
 
     # Ruta del PDF de salida
-    pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], 'historial.pdf').replace("\\", "/")
+    pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], 'historial.pdf')
 
-    # Ruta de wkhtmltopdf para Windows
+    # Ruta de wkhtmltopdf para Windows, usa aveces \\ en lugar de /
     #config = pdfkit.configuration(wkhtmltopdf=r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe")
-    # Ruta de wkhtmltopdf para Linux
+    # Ruta de wkhtmltopdf para Linux, siempre usa /
     config = pdfkit.configuration(wkhtmltopdf='/usr/bin/wkhtmltopdf')
 
     # Configuración para el PDF
     options = {
         'enable-local-file-access': '',
-        'header-html': temp_header_path,
+        'header-html': f"file:///{temp_header_path}",
         'header-spacing': '5',
         'footer-right': '[page] de [topage]',
         'footer-spacing': '5',
