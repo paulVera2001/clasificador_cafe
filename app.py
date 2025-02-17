@@ -9,7 +9,8 @@ import pdfkit
 from datetime import datetime
 from pathlib import Path
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
+
 app.secret_key = 'clave_secreta'  # Necesario para usar sesiones
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
