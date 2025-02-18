@@ -99,7 +99,9 @@ def exportar_pdf():
         "encoding": "UTF-8",
         "footer-center": "Página [page] de [topage]",  # Fuerza a wkhtmltopdf a incluir la paginación
         "footer-font-size": "10",
-        'header-html': temp_header_path
+        #'header-html': temp_header_path 
+        'header-html': os.path.join(app_root_path , temp_header_path) #Ruta absoluta
+        #'header-html': 'templates/header.html' #ruta relativa
     }
 
     # Generar el PDF
