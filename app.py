@@ -101,11 +101,12 @@ def exportar_pdf():
         #"footer-font-size": "10",
         
         
-        'header-html': temp_header_path
-        #header-right:'[page]/[toPage]'
-        #'header-html': os.path.join("https://clasificador-cafe.onrender.com/" , 'temp_header_path') #Ruta absoluta
+        #'header-html': temp_header_path
+        'header-html': 'header.html' #ruta relativa
         #'header-html':"https://clasificador-cafe.onrender.com/static/uploads/header_rendered.html"  #Ruta absoluta
-        #'header-html': 'templates/header.html' #ruta relativa
+        #'header-html': os.path.join("https://clasificador-cafe.onrender.com/" , 'temp_header_path') #Ruta absoluta
+        # #'header-html': 'templates/header.html' #ruta relativa
+        #header-right:'[page]/[toPage]'
     }
 
     # Generar el PDF
