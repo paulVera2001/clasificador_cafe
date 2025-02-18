@@ -102,7 +102,7 @@ def exportar_pdf():
         #"footer-font-size": "10",
         #'header-html': temp_header_path
         #'header-html': 'header.html' #ruta relativa
-        'header-html': f"https://clasificador-cafe.onrender.com/static/uploads/header_rendered.html", #Ruta absoluta
+        'header-html': f"https://clasificador-cafe.onrender.com/static/uploads/header.html", #Ruta absoluta
         "header-spacing": "5"
         #'header-html': os.path.join("https://clasificador-cafe.onrender.com/" , 'temp_header_path') #Ruta absoluta
         #"header-html": "header.html" #ruta relativa
