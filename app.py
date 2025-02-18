@@ -63,18 +63,21 @@ def exportar_pdf():
 
     # Renderizar historial_pdf.html con los datos
     rendered_html = render_template('historial_pdf.html', history=history, fecha_actual=fecha_actual, app_root_path=app_root_path)
+    rendered_header = render_template('header.html', app_root_path=app_root_path)
     
     # Guardar HTMLs
     temp_html_path = os.path.join(app.static_folder, 'uploads', 'historial_pdf_rendered.html')
     with open(temp_html_path, "w", encoding="utf-8") as f:
         f.write(rendered_html)
-
-    header_path = os.path.join(app.static_folder, 'uploads', 'header.html').replace('\\', '/')
-    footer_path = os.path.join(app.static_folder, 'uploads', 'footer.html').replace('\\', '/')
+    # Guardar HTMLs
+    temp_header_path = os.path.join(app.static_folder, 'uploads', 'header_rendered.html')
+    with open(temp_header_path, "w", encoding="utf-8") as f:
+        f.write(rendered_header)
+    #header_path = os.path.join(app.static_folder, 'uploads', 'header.html').replace('\\', '/')
+    #footer_path = os.path.join(app.static_folder, 'uploads', 'footer.html').replace('\\', '/')
 
     # Asegura rutas absolutas compatibles con wkhtmltopdf
-    header_path = os.path.abspath(header_path)
-    footer_path = f"file:///{os.path.abspath(footer_path)}"
+    #header_path = os.path.abspath(header_path)
 
     # Ruta del PDF de salida
     pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], 'historial.pdf')
@@ -96,7 +99,7 @@ def exportar_pdf():
         "encoding": "UTF-8",
         "footer-center": "Página [page] de [topage]",  # Fuerza a wkhtmltopdf a incluir la paginación
         "footer-font-size": "10",
-        'header-html': 'templates/header.html'
+        'header-html': temp_header_path
     }
 
     # Generar el PDF
