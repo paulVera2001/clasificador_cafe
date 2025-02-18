@@ -100,7 +100,8 @@ def exportar_pdf():
         "footer-center": "Página [page] de [topage]",  # Fuerza a wkhtmltopdf a incluir la paginación
         "footer-font-size": "10",
         #'header-html': temp_header_path 
-        'header-html': os.path.join("https://clasificador-cafe.onrender.com/" , temp_header_path) #Ruta absoluta
+        #'header-html': os.path.join("https://clasificador-cafe.onrender.com/" , 'temp_header_path') #Ruta absoluta
+        'header-html':"https://clasificador-cafe.onrender.com/templates/header.html"  #Ruta absoluta
         #'header-html': 'templates/header.html' #ruta relativa
     }
 
