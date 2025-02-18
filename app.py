@@ -97,12 +97,12 @@ def exportar_pdf():
         "margin-bottom": "20mm",
         "margin-left": "15mm",
         "encoding": "UTF-8",
-        "footer-center": "Página [page] de [topage]",  # Fuerza a wkhtmltopdf a incluir la paginación
-        "footer-font-size": "10",
+        #"footer-center": "Página [page] de [topage]",  # Fuerza a wkhtmltopdf a incluir la paginación
+        #"footer-font-size": "10",
         #'header-html': temp_header_path 
         #'header-html': os.path.join("https://clasificador-cafe.onrender.com/" , 'temp_header_path') #Ruta absoluta
-        'header-html':"https://clasificador-cafe.onrender.com/static/uploads/header_rendered.html"  #Ruta absoluta
-        #'header-html': 'templates/header.html' #ruta relativa
+        #'header-html':"https://clasificador-cafe.onrender.com/static/uploads/header_rendered.html"  #Ruta absoluta
+        'header-html': 'templates/header.html' #ruta relativa
     }
 
     # Generar el PDF
