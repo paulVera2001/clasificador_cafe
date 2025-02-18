@@ -1,5 +1,3 @@
-
-
 from flask import Flask, render_template, request, session, jsonify, send_file
 from models.modelo_clasificador import predecir_clase
 from werkzeug.utils import secure_filename
@@ -61,7 +59,7 @@ def exportar_pdf():
     fecha_actual = datetime.now().strftime("%d/%m/%Y")
     
     # Obtener el root path de la aplicación
-    app_root_path = app.root_path
+    app_root_path = app.root_path.replace('\\', '/')
 
     # Renderizar historial_pdf.html con los datos
     rendered_html = render_template('historial_pdf.html', history=history, fecha_actual=fecha_actual, app_root_path=app_root_path)
@@ -71,17 +69,34 @@ def exportar_pdf():
     with open(temp_html_path, "w", encoding="utf-8") as f:
         f.write(rendered_html)
 
+    header_path = os.path.join(app.static_folder, 'uploads', 'header.html').replace('\\', '/')
+    footer_path = os.path.join(app.static_folder, 'uploads', 'footer.html').replace('\\', '/')
+
+    # Asegura rutas absolutas compatibles con wkhtmltopdf
+    header_path = os.path.abspath(header_path)
+    footer_path = f"file:///{os.path.abspath(footer_path)}"
+
     # Ruta del PDF de salida
     pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], 'historial.pdf')
+    
 
     # Ruta de wkhtmltopdf para Windows, usa aveces \\ en lugar de /
-    #config = pdfkit.configuration(wkhtmltopdf=r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe")
+    #config = pdfkit.configuration(wkhtmltopdf=r"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe")
     # Ruta de wkhtmltopdf para Linux, siempre usa /
     config = pdfkit.configuration(wkhtmltopdf='/usr/bin/wkhtmltopdf')
 
     # Configuración para el PDF
     options = {
-        'enable-local-file-access': ''
+        "enable-local-file-access": "",
+        "page-size": "A4",
+        "margin-top": "20mm",
+        "margin-right": "15mm",
+        "margin-bottom": "20mm",
+        "margin-left": "15mm",
+        "encoding": "UTF-8",
+        "footer-center": "Página [page] de [topage]",  # Fuerza a wkhtmltopdf a incluir la paginación
+        "footer-font-size": "10",
+        'header-html': 'templates/header.html'
     }
 
     # Generar el PDF

@@ -3,73 +3,31 @@
 <head>
     <meta charset="UTF-8">    
     <title>Sistema Clasificador de Granos de Café</title>
-    <!-- <link rel="stylesheet" href="file:///{{ app_root_path  }}/static/css/historial_pdf.css"> -->
-    <style>
-        @page {
-            size: A4;
-            margin: 25mm 15mm 15mm 15mm;
-            @top-center {
-                content: element(header);
-            }
-            @bottom-center {
-                content: element(footer);
-            }
-        }
-        #header {
-            position: running(header);
-            width: 100%;
-            text-align: center;
-            font-size: 12px;
-        }
-        #footer {
-            position: running(footer);
-            width: 100%;
-            text-align: center;
-            font-size: 12px;
-        }
-    </style>
+    <link rel="stylesheet" href="file:///{{ app_root_path  }}/static/css/historial_pdf.css">
 </head>
 <body>
+        <h2>Historial</h2>
+        <p>Fecha actual: <span>{{ fecha_actual }}</span></p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                    <th>Resultado</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in history %}
+                <tr>
 
-<div id="header">
-    <h1>Este es el header</h1>
-</div>
-
-<div id="footer">
-    <p>Página <span class="page"></span> de <span class="topage"></span></p>
-</div>
-
-<div>
-    <h2>Historial</h2>
-    <p>Fecha actual: <span>{{ fecha_actual }}</span></p>
-    
-    <table>
-        <thead>
-            <tr>
-                <th>Imagen</th>
-                <th>Nombre</th>
-                <th>Resultado</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in history %}
-            <tr>
-
-                <td><img src="file:///{{ app_root_path  }}/static/uploads/{{ item.name }}"></td>
-                <td class="table-nombre-imagen">{{ item.name }}</td>
-                <td>{{ item.result }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
-
-<script>
-    // wkhtmltopdf sustituye automáticamente las clases page y topage
-    document.querySelector('.page').innerText = '[[page]]';
-    document.querySelector('.topage').innerText = '[[topage]]';
-</script>
-
+                    <td><img src="file:///{{ app_root_path  }}/static/uploads/{{ item.name }}"></td>
+                    <td class="table-nombre-imagen">{{ item.name }}</td>
+                    <td>{{ item.result }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 </body>
 </html>
 
