@@ -61,22 +61,15 @@ def exportar_pdf():
     fecha_actual = datetime.now().strftime("%d/%m/%Y")
     
     # Obtener el root path de la aplicación
-    app_root_path = app.root_path.replace("\\", "/")  # Asegura compatibilidad en Windows/Linux
+    app_root_path = app.root_path
 
     # Renderizar historial_pdf.html con los datos
     rendered_html = render_template('historial_pdf.html', history=history, fecha_actual=fecha_actual, app_root_path=app_root_path)
-    
-    # Renderizar header.html
-    rendered_header = render_template('header.html', fecha_actual=fecha_actual, app_root_path=app_root_path)
     
     # Guardar HTMLs
     temp_html_path = os.path.join(app.static_folder, 'uploads', 'historial_pdf_rendered.html')
     with open(temp_html_path, "w", encoding="utf-8") as f:
         f.write(rendered_html)
-
-    temp_header_path = os.path.join(app.static_folder, 'uploads', 'header_rendered.html')
-    with open(temp_header_path, "w", encoding="utf-8") as f:
-        f.write(rendered_header)
 
     # Ruta del PDF de salida
     pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], 'historial.pdf')
@@ -88,16 +81,7 @@ def exportar_pdf():
 
     # Configuración para el PDF
     options = {
-        'enable-local-file-access': '',
-        'header-html': f"file:///{temp_header_path}",
-        'header-spacing': '5',
-        'footer-right': '[page] de [topage]',
-        'footer-spacing': '5',
-        'margin-top': '25mm',  # Ajusta espacio para el header
-        'margin-bottom': '15mm',
-        'page-size': 'A4',
-        'dpi': 300,
-        'quiet': False  # Esto mostrará errores de wkhtmltopdf
+        'enable-local-file-access': ''
     }
 
     # Generar el PDF
