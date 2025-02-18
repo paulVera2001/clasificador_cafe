@@ -63,16 +63,16 @@ def exportar_pdf():
 
     # Renderizar historial_pdf.html con los datos
     rendered_html = render_template('historial_pdf.html', history=history, fecha_actual=fecha_actual, app_root_path=app_root_path)
-    rendered_header = render_template('header.html', app_root_path=app_root_path)
+    #rendered_header = render_template('header.html', app_root_path=app_root_path)
     
     # Guardar HTMLs
     temp_html_path = os.path.join(app.static_folder, 'uploads', 'historial_pdf_rendered.html')
     with open(temp_html_path, "w", encoding="utf-8") as f:
         f.write(rendered_html)
     # Guardar HTMLs
-    temp_header_path = os.path.join(app.static_folder, 'uploads', 'header_rendered.html')
-    with open(temp_header_path, "w", encoding="utf-8") as f:
-        f.write(rendered_header)
+    #temp_header_path = os.path.join(app.static_folder, 'uploads', 'header_rendered.html')
+    #with open(temp_header_path, "w", encoding="utf-8") as f:
+        #f.write(rendered_header)
     #header_path = os.path.join(app.static_folder, 'uploads', 'header.html').replace('\\', '/')
     #footer_path = os.path.join(app.static_folder, 'uploads', 'footer.html').replace('\\', '/')
 
@@ -103,7 +103,7 @@ def exportar_pdf():
         #'header-html': 'header.html' #ruta relativa
         #'header-html':"https://clasificador-cafe.onrender.com/static/uploads/header_rendered.html"  #Ruta absoluta
         #'header-html': os.path.join("https://clasificador-cafe.onrender.com/" , 'temp_header_path') #Ruta absoluta
-        "header-html": "templates/header.html" #ruta relativa
+        "header-html": "header.html" #ruta relativa
         #header-right:'[page]/[toPage]'
     }
 
