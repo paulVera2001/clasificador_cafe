@@ -59,8 +59,9 @@ def exportar_pdf():
     fecha_actual = datetime.now().strftime("%d/%m/%Y")
     
     # Obtener el root path de la aplicación
-    app_root_path = app.root_path.replace('\\', '/')
-
+    #app_root_path = app.root_path.replace('\\', '/')
+    app_root_path = app.root_path
+    
     # Renderizar historial_pdf.html con los datos
     rendered_html = render_template('historial_pdf.html', history=history, fecha_actual=fecha_actual, app_root_path=app_root_path)
     #rendered_header = render_template('header.html', app_root_path=app_root_path)
@@ -103,8 +104,8 @@ def exportar_pdf():
         #'header-html': 'header.html' #ruta relativa
         #'header-html':"https://clasificador-cafe.onrender.com/static/uploads/header_rendered.html"  #Ruta absoluta
         #'header-html': os.path.join("https://clasificador-cafe.onrender.com/" , 'temp_header_path') #Ruta absoluta
-        "header-html": "header.html" #ruta relativa
-        #header-right:'[page]/[toPage]'
+        #"header-html": "header.html" #ruta relativa
+        "header-right":'[page]/[toPage]'
     }
 
     # Generar el PDF
