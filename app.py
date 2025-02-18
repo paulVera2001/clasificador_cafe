@@ -59,21 +59,21 @@ def exportar_pdf():
     fecha_actual = datetime.now().strftime("%d/%m/%Y")
     
     # Obtener el root path de la aplicación
-    #app_root_path = app.root_path.replace('\\', '/')
-    app_root_path = app.root_path
+    app_root_path = app.root_path.replace('\\', '/')
+    #app_root_path = app.root_path
     
     # Renderizar historial_pdf.html con los datos
     rendered_html = render_template('historial_pdf.html', history=history, fecha_actual=fecha_actual, app_root_path=app_root_path)
-    #rendered_header = render_template('header.html', app_root_path=app_root_path)
+    rendered_header = render_template('header.html', app_root_path=app_root_path)
     
     # Guardar HTMLs
     temp_html_path = os.path.join(app.static_folder, 'uploads', 'historial_pdf_rendered.html')
     with open(temp_html_path, "w", encoding="utf-8") as f:
         f.write(rendered_html)
     # Guardar HTMLs
-    #temp_header_path = os.path.join(app.static_folder, 'uploads', 'header_rendered.html')
-    #with open(temp_header_path, "w", encoding="utf-8") as f:
-        #f.write(rendered_header)
+    temp_header_path = os.path.join(app.static_folder, 'uploads', 'header_rendered.html')
+    with open(temp_header_path, "w", encoding="utf-8") as f:
+        f.write(rendered_header)
     #header_path = os.path.join(app.static_folder, 'uploads', 'header.html').replace('\\', '/')
     #footer_path = os.path.join(app.static_folder, 'uploads', 'footer.html').replace('\\', '/')
 
@@ -85,9 +85,9 @@ def exportar_pdf():
     
 
     # Ruta de wkhtmltopdf para Windows, usa aveces \\ en lugar de /
-    #config = pdfkit.configuration(wkhtmltopdf=r"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe")
+    config = pdfkit.configuration(wkhtmltopdf=r"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe")
     # Ruta de wkhtmltopdf para Linux, siempre usa /
-    config = pdfkit.configuration(wkhtmltopdf='/usr/bin/wkhtmltopdf')
+    #config = pdfkit.configuration(wkhtmltopdf='/usr/bin/wkhtmltopdf')
 
     # Configuración para el PDF
     options = {
@@ -102,16 +102,21 @@ def exportar_pdf():
         #"footer-font-size": "10",
         #'header-html': temp_header_path
         #'header-html': 'header.html' #ruta relativa
-        'header-html': f"https://clasificador-cafe.onrender.com/static/uploads/header.html", #Ruta absoluta
-        "header-spacing": "5"
+        'header-html': app_root_path+"/static/uploads/header_rendered.html"
+        #'header-html': "https://clasificador-cafe.onrender.com/static/uploads/header.html", #Ruta absoluta
+        #"header-spacing": "10"
         #'header-html': os.path.join("https://clasificador-cafe.onrender.com/" , 'temp_header_path') #Ruta absoluta
         #"header-html": "header.html" #ruta relativa
         #"header-right":'[page]/[toPage]'
     }
+    # valor del header-html
+    print(f"Header HTML Path: {options['header-html']}")
 
     # Generar el PDF
-    pdfkit.from_file(temp_html_path, pdf_path, configuration=config, options=options)
-
+    try:
+        pdfkit.from_file(temp_html_path, pdf_path, configuration=config, options=options)
+    except Exception as e:
+        print(f"Error generando PDF: {e}")
     return send_file(pdf_path, as_attachment=True, download_name="historial.pdf")
 
 
