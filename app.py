@@ -52,9 +52,6 @@ def historial():
     history = session.get('history', [])
     return render_template('historial.html', history=history)
 
-#@app.route('/header')
-#def header():
-    #return render_template('header.html')
 
 @app.route('/exportar_pdf')
 def exportar_pdf():
@@ -63,31 +60,15 @@ def exportar_pdf():
     
     # Obtener el root path de la aplicación
     app_root_path = app.root_path.replace('\\', '/')
-    #app_root_path = app.root_path
     
     # Renderizar historial_pdf.html con los datos
     rendered_html = render_template('historial_pdf.html', history=history, fecha_actual=fecha_actual, app_root_path=app_root_path)
-    # Renderizar historial_pdf.html con los datos
-    # #rendered_header = render_template('header.html', app_root_path=app_root_path)
     
     # Guardar HTMLs
     temp_html_path = os.path.join(app.static_folder, 'uploads', 'historial_pdf_rendered.html')
     with open(temp_html_path, "w", encoding="utf-8") as f:
         f.write(rendered_html)
-    # Guardar HTMLs
-    #temp_header_path = os.path.join(app.static_folder, 'uploads', 'header_rendered.html')
-    #with open(temp_header_path, "w", encoding="utf-8") as f:
-    #    f.write(rendered_header)
     
-    #with app.app_context():
-    #    header_url = url_for('static', filename='uploads/header_rendered.html', _external=True)
-    
-    
-    #header_path = os.path.join(app.static_folder, 'uploads', 'header.html').replace('\\', '/')
-    #footer_path = os.path.join(app.static_folder, 'uploads', 'footer.html').replace('\\', '/')
-
-    # Asegura rutas absolutas compatibles con wkhtmltopdf
-    #header_path = os.path.abspath(header_path)
 
     # Ruta del PDF de salida
     pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], 'historial.pdf')
@@ -100,33 +81,8 @@ def exportar_pdf():
 
     # Configuración para el PDF
     options = {
-        "enable-local-file-access": "",
-        #"page-size": "A4",
-        #"margin-top": "40mm",
-        #"margin-right": "15mm",
-        #"margin-bottom": "20mm",
-        #"margin-left": "15mm",
-        #"encoding": "UTF-8",
-        #"footer-center": "Página [page] de [topage]",  # Fuerza a wkhtmltopdf a incluir la paginación
-        #"footer-font-size": "10",
-        #'header-html': temp_header_path
-        #'header-html': 'header.html' #ruta relativa
-        #'header-html': app_root_path+"/static/uploads/header_rendered.html"
-        #'header-html': "https://clasificador-cafe.onrender.com/static/uploads/header_rendered.html"
-        #'header-html': "http://127.0.0.1:5000/static/uploads/header_rendered.html"
-        #'header-html': header_url
-        #"header-html": "https://clasificador-cafe.onrender.com/header"
-        #"header-html": "http://0.0.0.0:10000/header"
-        #"header-html": "http://127.0.0.1:5000/header"
-        #'header-html': "https://clasificador-cafe.onrender.com/static/uploads/header.html", #Ruta absoluta
-        #"header-spacing": "50"
-        #'header-html': os.path.join("https://clasificador-cafe.onrender.com/" , 'temp_header_path') #Ruta absoluta
-        #"header-html": "header.html" #ruta relativa
-        #"header-right":'[page]/[toPage]'
+        "enable-local-file-access": ""
     }
-    # valor del header-html
-    #print(f"Header HTML Path: {options['header-html']}")
-
     # Generar el PDF
     try:
         pdfkit.from_file(temp_html_path, pdf_path, configuration=config, options=options)
