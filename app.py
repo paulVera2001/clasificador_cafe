@@ -82,7 +82,7 @@ def exportar_pdf():
     # Configuración para el PDF
     options = {
         "enable-local-file-access": "",
-        "repeat-table-headers": ""
+        "header-spacing": "5"
     }
     # Generar el PDF
     try:
