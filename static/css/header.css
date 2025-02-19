@@ -2,12 +2,12 @@
     width: 100%;
     border-bottom: 2px solid black;
     text-align: center;
-    padding-top: 10mm; /* Espacio extra arriba del encabezado */
+    /*  padding-top: 10mm; */ /* Espacio extra arriba del encabezado */
 }
 
 .header-table td {
     vertical-align: middle;
-    padding: 5px;
+    padding: 2px;
 }
 
 .header-table img {
@@ -21,5 +21,5 @@
 }
 
 body {
-    margin-top: 10mm;
+    margin-top: 5mm;
 }

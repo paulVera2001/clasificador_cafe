@@ -43,4 +43,5 @@ td img {
     white-space: normal;     /* Permite que el texto se divida en múltiples líneas */
     text-align: center;      /* Asegura que el texto esté alineado */
     max-width: 120px;        /* Establece un ancho máximo para evitar expansión */
+    page-break-before: always;
 }

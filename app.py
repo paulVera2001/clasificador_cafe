@@ -52,6 +52,9 @@ def historial():
     history = session.get('history', [])
     return render_template('historial.html', history=history)
 
+@app.route('/header')
+def header():
+    return render_template('header.html')
 
 @app.route('/exportar_pdf')
 def exportar_pdf():
@@ -110,7 +113,9 @@ def exportar_pdf():
         #'header-html': app_root_path+"/static/uploads/header_rendered.html"
         #'header-html': "https://clasificador-cafe.onrender.com/static/uploads/header_rendered.html"
         #'header-html': "http://127.0.0.1:5000/static/uploads/header_rendered.html"
-        'header-html': header_url
+        #'header-html': header_url
+        "header-html": "https://clasificador-cafe.onrender.com/header"
+        #"header-html": "http://127.0.0.1:5000/header"
         #'header-html': "https://clasificador-cafe.onrender.com/static/uploads/header.html", #Ruta absoluta
         #"header-spacing": "50"
         #'header-html': os.path.join("https://clasificador-cafe.onrender.com/" , 'temp_header_path') #Ruta absoluta
