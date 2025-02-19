@@ -85,9 +85,9 @@ def exportar_pdf():
     
 
     # Ruta de wkhtmltopdf para Windows, usa aveces \\ en lugar de /
-    #config = pdfkit.configuration(wkhtmltopdf=r"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe")
+    config = pdfkit.configuration(wkhtmltopdf=r"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe")
     # Ruta de wkhtmltopdf para Linux, siempre usa /
-    config = pdfkit.configuration(wkhtmltopdf='/usr/bin/wkhtmltopdf')
+    #config = pdfkit.configuration(wkhtmltopdf='/usr/bin/wkhtmltopdf')
 
     # Configuración para el PDF
     options = {
@@ -102,7 +102,7 @@ def exportar_pdf():
         #"footer-font-size": "10",
         #'header-html': temp_header_path
         #'header-html': 'header.html' #ruta relativa
-        'header-html': app_root_path+"/static/uploads/header_rendered.html"
+        'header-html': "file:///"+app_root_path+"/static/uploads/header_rendered.html"
         #'header-html': "https://clasificador-cafe.onrender.com/static/uploads/header.html", #Ruta absoluta
         #"header-spacing": "10"
         #'header-html': os.path.join("https://clasificador-cafe.onrender.com/" , 'temp_header_path') #Ruta absoluta
