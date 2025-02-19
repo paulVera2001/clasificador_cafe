@@ -1,0 +1,7 @@
+services:
+  - name: clasificador-cafe
+    env: docker
+    dockerfilePath: ./Dockerfile
+    buildCommand: ""
+    startCommand: "python app.py"
+    plan: free
