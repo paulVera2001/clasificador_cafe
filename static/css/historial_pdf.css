@@ -1,7 +1,30 @@
 body {
     font-family: Arial;
     font-size: 16px;
-    margin: 20mm 10mm 20mm 10mm; /* Márgenes para evitar que el contenido quede pegado al borde */
+    margin: 20mm 10mm 20mm 10mm; /* :T R B L Márgenes para evitar que el contenido quede pegado al borde */
+}
+
+.header-table {
+    width: 100%;
+    border-bottom: 2px solid black;
+    text-align: center;
+    /* padding-bottom: 10mm; Espacio extra arriba del encabezado */
+}
+
+.header-table td {
+    vertical-align: middle;
+    padding: 2px;
+    border: 0px;
+}
+
+.header-table img {
+    height: 60px; /* Ajusta el tamaño de las imágenes */
+    width: auto;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: bold;
 }
 
 h2 {

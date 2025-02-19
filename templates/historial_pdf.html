@@ -6,28 +6,40 @@
     <link rel="stylesheet" href="file:///{{ app_root_path  }}/static/css/historial_pdf.css">
 </head>
 <body>
-        <h2 >Historial</h2>
-        <p>Fecha actual: <span>{{ fecha_actual }}</span></p>
-        
-        <table>
-            <thead>
-                <tr>
-                    <th>Imagen</th>
-                    <th>Nombre</th>
-                    <th>Resultado</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in history %}
-                <tr>
+    <table class="header-table">
+        <tr>
+            <td style="width: 15%;">
+                <img src="file:///{{ app_root_path  }}/static/assets/robot-inferior-izquierdo.jpg">
+            </td>
+            <td class="title">Sistema Clasificador de Granos de Café</td>
+            <td style="width: 15%;">
+                <img src="file:///{{ app_root_path  }}/static/assets/paso3.png">
+            </td>
+        </tr>
+    </table>
 
-                    <td><img src="file:///{{ app_root_path  }}/static/uploads/{{ item.name }}"></td>
-                    <td class="table-nombre-imagen">{{ item.name }}</td>
-                    <td>{{ item.result }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <h2 >Historial</h2>
+    <p>Fecha actual: <span>{{ fecha_actual }}</span></p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Resultado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in history %}
+            <tr>
+
+                <td><img src="file:///{{ app_root_path  }}/static/uploads/{{ item.name }}"></td>
+                <td class="table-nombre-imagen">{{ item.name }}</td>
+                <td>{{ item.result }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
 
