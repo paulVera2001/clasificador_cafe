@@ -13,6 +13,18 @@ app.secret_key = 'clave_secreta'  # Necesario para usar sesiones
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
+import subprocess
+
+def check_wkhtmltopdf_version():
+    try:
+        version = subprocess.check_output(['wkhtmltopdf', '--version'], stderr=subprocess.STDOUT)
+        print(f"Versión de wkhtmltopdf: {version.decode('utf-8').strip()}")
+    except Exception as e:
+        print(f"Error al verificar la versión de wkhtmltopdf: {e}")
+
+check_wkhtmltopdf_version()
+
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -34,7 +46,6 @@ def clasificar():
     #print(f"Imagen guardada en: {filepath}")
     
     resultado = predecir_clase(filepath)
-
     #session.clear() #Borrar datos de sesion para pruebas en servidor local
     
     # Guardar en historial (sin base de datos)
