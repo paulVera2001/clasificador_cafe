@@ -4,29 +4,6 @@ body {
     margin: 20mm 10mm 20mm 10mm; /* :T R B L Márgenes para evitar que el contenido quede pegado al borde */
 }
 
-.header-table {
-    width: 100%;
-    border-bottom: 2px solid black;
-    text-align: center;
-    /* padding-bottom: 10mm; Espacio extra arriba del encabezado */
-}
-
-.header-table td {
-    vertical-align: middle;
-    padding: 2px;
-    border: 0px;
-}
-
-.header-table img {
-    height: 60px; /* Ajusta el tamaño de las imágenes */
-    width: auto;
-}
-
-.title {
-    font-size: 18px;
-    font-weight: bold;
-}
-
 h2 {
     text-align: center;
     margin-bottom: 10px;
@@ -59,12 +36,4 @@ tbody tr {
 td img {
     width: 90px;
     height: 90px;
-}
-/* Estilos para que el nombre de la imagen se adapte a la celda */
-.table-nombre-imagen {
-    word-wrap: break-word;   /* Permite dividir palabras largas */
-    white-space: normal;     /* Permite que el texto se divida en múltiples líneas */
-    text-align: center;      /* Asegura que el texto esté alineado */
-    max-width: 120px;        /* Establece un ancho máximo para evitar expansión */
-    page-break-before: always;
 }
