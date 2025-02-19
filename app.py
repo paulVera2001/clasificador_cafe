@@ -67,7 +67,8 @@ def exportar_pdf():
     
     # Renderizar historial_pdf.html con los datos
     rendered_html = render_template('historial_pdf.html', history=history, fecha_actual=fecha_actual, app_root_path=app_root_path)
-    #rendered_header = render_template('header.html', app_root_path=app_root_path)
+    # Renderizar historial_pdf.html con los datos
+    # #rendered_header = render_template('header.html', app_root_path=app_root_path)
     
     # Guardar HTMLs
     temp_html_path = os.path.join(app.static_folder, 'uploads', 'historial_pdf_rendered.html')
