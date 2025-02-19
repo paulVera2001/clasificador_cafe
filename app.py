@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session, jsonify, send_file
+from flask import Flask, render_template, request, session, jsonify, send_file, url_for
 from models.modelo_clasificador import predecir_clase
 from werkzeug.utils import secure_filename
 import os
@@ -74,6 +74,11 @@ def exportar_pdf():
     temp_header_path = os.path.join(app.static_folder, 'uploads', 'header_rendered.html')
     with open(temp_header_path, "w", encoding="utf-8") as f:
         f.write(rendered_header)
+    
+    with app.app_context():
+        header_url = url_for('static', filename='uploads/header_rendered.html', _external=True)
+    
+    
     #header_path = os.path.join(app.static_folder, 'uploads', 'header.html').replace('\\', '/')
     #footer_path = os.path.join(app.static_folder, 'uploads', 'footer.html').replace('\\', '/')
 
@@ -93,7 +98,7 @@ def exportar_pdf():
     options = {
         "enable-local-file-access": "",
         #"page-size": "A4",
-        #"margin-top": "20mm",
+        #"margin-top": "40mm",
         #"margin-right": "15mm",
         #"margin-bottom": "20mm",
         #"margin-left": "15mm",
@@ -103,8 +108,9 @@ def exportar_pdf():
         #'header-html': temp_header_path
         #'header-html': 'header.html' #ruta relativa
         #'header-html': app_root_path+"/static/uploads/header_rendered.html"
-        'header-html': "https://clasificador-cafe.onrender.com/static/uploads/header_rendered.html"
+        #'header-html': "https://clasificador-cafe.onrender.com/static/uploads/header_rendered.html"
         #'header-html': "http://127.0.0.1:5000/static/uploads/header_rendered.html"
+        'header-html': header_url
         #'header-html': "https://clasificador-cafe.onrender.com/static/uploads/header.html", #Ruta absoluta
         #"header-spacing": "50"
         #'header-html': os.path.join("https://clasificador-cafe.onrender.com/" , 'temp_header_path') #Ruta absoluta
