@@ -92,18 +92,19 @@ def exportar_pdf():
     # Configuración para el PDF
     options = {
         "enable-local-file-access": "",
-        "page-size": "A4",
-        "margin-top": "20mm",
-        "margin-right": "15mm",
-        "margin-bottom": "20mm",
-        "margin-left": "15mm",
-        "encoding": "UTF-8",
+        #"page-size": "A4",
+        #"margin-top": "20mm",
+        #"margin-right": "15mm",
+        #"margin-bottom": "20mm",
+        #"margin-left": "15mm",
+        #"encoding": "UTF-8",
         #"footer-center": "Página [page] de [topage]",  # Fuerza a wkhtmltopdf a incluir la paginación
         #"footer-font-size": "10",
         #'header-html': temp_header_path
         #'header-html': 'header.html' #ruta relativa
         #'header-html': app_root_path+"/static/uploads/header_rendered.html"
         'header-html': "https://clasificador-cafe.onrender.com/static/uploads/header_rendered.html"
+        #'header-html': "http://127.0.0.1:5000/static/uploads/header_rendered.html"
         #'header-html': "https://clasificador-cafe.onrender.com/static/uploads/header.html", #Ruta absoluta
         #"header-spacing": "50"
         #'header-html': os.path.join("https://clasificador-cafe.onrender.com/" , 'temp_header_path') #Ruta absoluta
