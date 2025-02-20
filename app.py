@@ -60,9 +60,10 @@ class PDF(FPDF):
         self.cell(0, 10, f'Historial - {datetime.now().strftime("%d/%m/%Y")}', ln=True, align='C')
         self.ln(5)
         self.set_font('Arial', 'B', 10)
-        self.cell(30, 10, 'Imagen', 1)
-        self.cell(80, 10, 'Nombre', 1)
-        self.cell(40, 10, 'Resultado', 1)
+        self.set_x(15)  # Centrar tabla ajustando el margen izquierdo
+        self.cell(40, 10, 'Imagen', 1, align='C')
+        self.cell(100, 10, 'Nombre', 1, align='C')  # Incrementar el ancho de la columna 'Nombre'
+        self.cell(40, 10, 'Resultado', 1, align='C')
         self.ln()
 
     def footer(self):
@@ -72,23 +73,24 @@ class PDF(FPDF):
 
 @app.route('/exportar_pdf')
 def export_pdf():
-    pdf = PDF()
+    pdf = PDF('P', 'mm', 'A4')  # PDF en formato A4
+    pdf.set_auto_page_break(auto=True, margin=15)  # Márgenes inferiores
     pdf.add_page()
     pdf.set_font("Arial", "", 10)
 
     if 'history' in session:
         for item in session['history']:
-            # Verifica si queda espacio suficiente en la página, si no, añade una nueva
-            if pdf.get_y() > 260:  # Ajusta este valor según el tamaño de la página
+            if pdf.get_y() > 260:
                 pdf.add_page()
-            pdf.cell(30, 30, '', 1)  # Espacio para la imagen
-            x = pdf.get_x()-30 # Cambio a codigo de CHAGPT
-            y = pdf.get_y()
+            pdf.set_x(15)  # Centrar tabla ajustando el margen izquierdo
+            pdf.cell(40, 40, '', 1)  # Espacio para la imagen
+            x = pdf.get_x() - 35  # Posición de la imagen
+            y = pdf.get_y() + 5
             pdf.image(item['file'], x=x, y=y, w=30, h=30)
-            pdf.set_xy(x + 30, y)  # Mueve el cursor a la derecha de la imagen
-            pdf.cell(80, 30, item['name'], 1)
-            pdf.cell(40, 30, item['result'], 1)
-            pdf.ln(30)  # Altura fija para cada fila
+            pdf.set_xy(x + 35, y-5)
+            pdf.cell(100, 40, item['name'], 1, align='C') 
+            pdf.cell(40, 40, item['result'], 1, align='C')
+            pdf.ln(40)
 
     pdf_path = os.path.join(download_folder, "historial_cafe.pdf")
     pdf.output(pdf_path)
