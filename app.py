@@ -88,21 +88,13 @@ def exportar_pdf():
     # Ruta de wkhtmltopdf para Windows, usa aveces \\ en lugar de /
     #config = pdfkit.configuration(wkhtmltopdf=r"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe")
     # Ruta de wkhtmltopdf para Linux, siempre usa /
-    #config = pdfkit.configuration(wkhtmltopdf='/usr/bin/wkhtmltopdf')
-    
-    
-
-    # Busca la ruta de wkhtmltopdf instalada por el paquete
-    wkhtmltopdf_path = shutil.which('wkhtmltopdf')
-
-    # Configura pdfkit para usar esta ruta
-    config = pdfkit.configuration(wkhtmltopdf=wkhtmltopdf_path)
+    config = pdfkit.configuration(wkhtmltopdf='/usr/bin/wkhtmltopdf')
 
     # Configuración para el PDF
     options = {
         "enable-local-file-access": "",
         "header-spacing": "5",
-        "footer-center": "Página [page] de [topage]"
+        "footer-right": "Página [page] de [topage]"
     }
     # Generar el PDF
     try:
