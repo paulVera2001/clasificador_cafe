@@ -87,8 +87,31 @@ def export_pdf():
             x = pdf.get_x() - 35  # Posición de la imagen
             y = pdf.get_y() + 5
             pdf.image(item['file'], x=x, y=y, w=30, h=30)
-            pdf.set_xy(x + 35, y-5)
-            pdf.cell(100, 40, item['name'], 1, align='C') 
+            pdf.set_xy(x + 35, y - 5)
+
+            # Obtener ancho máximo y dividir el texto en líneas
+            max_width = 100
+            lines = pdf.multi_cell(max_width, 10, item['name'], border=0, align='C', split_only=True)
+
+            # Calcular la altura total de las líneas
+            text_height = len(lines) * 10
+
+            # Determinar la altura final de la celda (mínimo 40)
+            cell_height = max(40, text_height)
+
+            # Dibujar el borde de la celda manualmente
+            pdf.rect(x + 35, y - 5, max_width, cell_height)
+
+            # Calcular posición para centrar el texto verticalmente
+            start_y = y - 5 + (cell_height - text_height) / 2
+
+            # Establecer posición inicial para multi_cell y escribir el texto
+            pdf.set_xy(x + 35, start_y)
+            pdf.multi_cell(max_width, 10, item['name'], border=0, align='C')
+
+            # Mover la posición Y para la siguiente celda
+            #pdf.set_y(y - 5)
+            pdf.set_xy(x + 35 + max_width, y - 5)
             pdf.cell(40, 40, item['result'], 1, align='C')
             pdf.ln(40)
 
