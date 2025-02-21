@@ -57,8 +57,10 @@ class PDF(FPDF):
     def header(self):
         self.set_font('Arial', 'B', 12)
         self.cell(0, 10, 'Sistema Clasificador de Granos de Cafe', ln=True, align='C')
-        self.cell(0, 10, f'Historial - {datetime.now().strftime("%d/%m/%Y")}', ln=True, align='C')
-        self.ln(5)
+        self.cell(0, 10, 'Historial', ln=True, align='C')
+        self.set_font('Arial', '', 11)
+        self.cell(0, 5, f'Fecha actual: {datetime.now().strftime("%d/%m/%Y")}', ln=True, align='R')
+        self.ln(10)
         self.set_font('Arial', 'B', 10)
         self.set_x(15)  # Centrar tabla ajustando el margen izquierdo
         self.cell(40, 10, 'Imagen', 1, align='C')
