@@ -9,8 +9,9 @@
 </head>
 <body>
     <div class="containerMain">
+                
         <!-- Título del sistema -->
-        <h1>Sistema Clasificador de Granos de Café</h1>
+        <h1>Sistema Inteligente Clasificador de Granos de Café</h1>
 
         <!-- Botón para subir imagen -->
         <input type="file" id="inputImagen" accept="image/*" hidden>
@@ -26,7 +27,7 @@
 
         <!-- Contenedor del resultado -->
         <div class="resultado-container">
-            <p id="resultadoEtiqueta" class="resultado-etiqueta">Resultado de la Clasificación:</p>
+            <p id="resultadoEtiqueta" class="resultado-etiqueta">Resultado de la clasificación:</p>
             <p id="resultadoTexto" class="resultado-texto"></p>
         </div>
 
@@ -35,7 +36,7 @@
                 enabled 
             {% else %} 
                 disabled 
-            {% endif %}>
+            {% endif %} class="btn-historial">
             Ver Historial
         </button>
 

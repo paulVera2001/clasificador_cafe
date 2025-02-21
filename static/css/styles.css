@@ -1,5 +1,5 @@
 /* Importar fuente personalizada (si es necesario) */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap'); */
 
 body {
     background-color: #f8f3dc; /* Color de fondo */
@@ -38,41 +38,44 @@ h1 {
     margin-top: 20px;
 }
 
-/* Sección de pasos en formato vertical */
+/* Sección de pasos en formato vertical alineados a la izquierda */
 .steps {
     display: flex;
-    flex-direction: column; /* Cambia a disposición vertical */
-    /*align-items: center;
-    justify-content: center;*/ /*COMENTADO TEMPORALMENTE*/
-    gap: 20px;
+    flex-direction: column; /* Disposición vertical */
+    align-items: flex-start; /* Alinea todo el contenido a la izquierda */
+    gap: 1px;
 }
 
 /* Cada paso */
 .step {
     display: flex;
-    align-items: left;
+    align-items: center;
+    justify-content: flex-start; /* Asegura que los elementos estén alineados a la izquierda */
     gap: 10px;
 }
 
-
+/* Imagen del paso */
 .step img {
     width: 120px; /* Ajustar tamaño de imágenes */
     height: auto;
     border-radius: 10px;
 }
 
+/* Texto del paso */
 .step-text {
-    text-align: left;
-    font-size: 1.2rem; /*Maximiza o minimiza el contenido*/
-    padding: 10px 15px; /*Separa la alineación izquierda entre la imagen y el texto */
+    text-align: left; /* Alinea el texto a la izquierda */
+    font-size: 1.2rem;
+    padding: 10px 15px;
 }
 
+/* Título del paso */
 .step-title {
     font-weight: bold;
     background-color: #d4af37;
     padding: 5px 10px;
     border-radius: 5px;
 }
+
 
 /* Contenedor del GIF y botón */
 .demo {
@@ -171,9 +174,6 @@ h1 {
     color: #a87029;
 }
 
-.subtitulo {
-    font-size: 1.5rem;
-}
 /* Botón de subir imagen */
 .btn-upload {
     background-color: #6b8e23;
@@ -189,7 +189,7 @@ h1 {
 }
 
 .btn-upload:hover {
-    background-color: #556b2f;
+    background-color: #6b8e23;
 }
 
 /* Contenedor de la imagen cargada */
@@ -208,7 +208,7 @@ h1 {
 
 /* Botón de clasificación */
 .btn-classify {
-    background-color: #c2e3a7;
+    background-color: #bebdc4;
     color: #5a5a5a;
     font-size: 1.2rem;
     padding: 10px 20px;
@@ -219,13 +219,41 @@ h1 {
 }
 
 .btn-classify:enabled {
-    background-color: #6b8e23;
+    background-color: #73717a;
     color: white;
     cursor: pointer;
 }
 
 .btn-classify:enabled:hover {
-    background-color: #556b2f;
+    background-color: #5e5d65;
+}
+
+/* Botón de ver historial */
+.btn-historial {
+    background-color: #e1bd93;
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: not-allowed;
+    border: none;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+
+    /*Estilos para colocarlo el botón en la parte superior derecha*/
+    position: absolute;
+    top: 80px;
+    right: 140px;
+    width: 150px;
+}
+
+.btn-historial:enabled {
+    background-color: #a57c4c;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-historial:enabled:hover {
+    background-color: #845b2b;
 }
 
 /* Imágenes decorativas */
@@ -316,3 +344,142 @@ img {
     margin: auto;
 }
 /*=========================================================*/
+/* Contenedor exclusivo para BOTONES DE HISTORIAL */
+.historial-botones-container {
+    display: flex;
+    justify-content: flex-end; /* Alinea a la derecha */
+    gap: 10px; /* Espaciado entre botones */
+    margin-bottom: 10px; /* Separación con la tabla */
+    align-self: flex-end; /* Rompe la alineación centrada */
+    max-width: 1000px; /* Ajusta este valor según el ancho de tu tabla */
+    margin-bottom: 10px; /* Separación con la tabla */
+    width: 100%; /* Ocupar todo el ancho disponible */
+    position: relative;
+}
+
+.fila-botones td {
+    position: absolute;
+    left: 10;
+    width: 100%;
+    background: transparent !important;
+    border: none !important;
+    padding: 0px;
+}
+
+
+/* Estilos específicos para estos botones */
+.historial-boton {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Colores específicos */
+/* Botón de regresar (marrón) */
+#btn-regresar {
+    background-color: #d48429;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#btn-regresar:hover {
+    background-color: #6B3F20;
+}
+
+/* Botón borrar historial (rojo suave) */
+#btnBorrarHistorial {
+    background-color: #D9534F;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#btnBorrarHistorial:disabled {
+    background-color: #E6A8A1;
+    cursor: not-allowed;
+}
+
+/* Botón exportar (azul intenso) */
+#btn-exportar {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#btn-exportar:disabled {
+    background-color: #A4C4E7;
+    cursor: not-allowed;
+}
+
+
+/* Efecto hover solo para estos botones */
+.historial-boton:hover {
+    opacity: 0.8;
+}
+
+/* Asegurar que la tabla no ocupe todo el ancho */
+table {
+    width: 1000px; /* Ajusta esto al tamaño real de tu tabla */
+    margin: 0 auto; /* Centra la tabla en la interfaz */
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden; /* Para que los bordes redondeados apliquen correctamente */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra elegante */
+}
+
+/* Estilos para que el nombre de la imagen se adapte a la celda */
+.table-nombre-imagen {
+    word-wrap: break-word;   /* Permite dividir palabras largas */
+    white-space: normal;     /* Permite que el texto se divida en múltiples líneas */
+    text-align: center;      /* Asegura que el texto esté alineado */
+    max-width: 100px;        /* Establece un ancho máximo para evitar expansión */
+}
+
+/* Bordes en el contorno de la tabla, pero no en la primera fila */
+table td, table th {
+    border: 1px solid #ddd;
+}
+
+/* Eliminar bordes en la primera fila */
+table tr:first-child td {
+    border: none;
+}
+
+/* Estilos para los encabezados */
+thead th {
+    background-color: #a57c4c; /* Color café elegante */
+    color: white;
+    padding: 12px;
+    font-weight: bold;
+    text-align: left;
+}
+
+/* Estilos para los registros */
+tbody tr {
+    background-color: #F5F5DC; /* Fondo para filas */
+}
+
+/* Color de letra negro en los registros */
+tbody tr td {
+    color: black; /* Solo afecta a los registros, no al encabezado */
+    padding: 10px;
+}
+
+/* Dar un efecto de resaltado a las filas al pasar el mouse */
+tbody tr:hover {
+    background-color: #daeeb8; /* Marrón del color del título */
+}
+
+/***************************************************/
+.mi-tabla tr:first-child {
+    background-color: #a57c4c; /* Color de fondo */
+    color: white; /* Color de texto para contraste */
+    font-weight: bold; /* Negrita para el texto */
+}

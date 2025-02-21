@@ -3,48 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Clasificador de Granos de Café</title>
+    <title>Historial de Clasificaciones</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <h1>Sistema Clasificador de Granos de Café</h1>
-    <h2>Historial</h2>
+    <div class="containerMain">
+        <h1>Sistema Inteligente Clasificador de Granos de Café</h1>
+        <h2>Historial</h2>
 
-    <button onclick="location.href='/main'" style="float: right;">Regresar</button>
+        <table >
+            <!-- Nueva fila para los botones -->
+            <tr class="fila-botones">
+                <td colspan="3">
+                    <div class="historial-botones-container">
+                        
+                        <button id="btn-exportar" onclick="location.href='/exportar_pdf'" 
+                            {% if session['history'] and session['history']|length > 0 %} 
+                                enabled 
+                            {% else %} 
+                                disabled 
+                            {% endif %} class="historial-boton">
+                            Exportar
+                        </button>
+                        
+                        <button id="btnBorrarHistorial"
+                            {% if session['history'] and session['history']|length > 0 %} 
+                                enabled 
+                            {% else %} 
+                                disabled 
+                            {% endif %} class="historial-boton">
+                            Borrar Historial
+                        </button>
 
-    <button id="btnBorrarHistorial" style="float: right;" 
-        {% if session['history'] and session['history']|length > 0 %} 
-            enabled 
-        {% else %} 
-            disabled 
-        {% endif %}>
-        Borrar Historial
-    </button>
+                        <button id="btn-regresar" onclick="location.href='/main'" class="historial-boton">Regresar</button>
+                        
+                    </div>
+                </td>
+            </tr>
+        </table>
+        
+        <br>
+        <br>
+        <br>
 
-    <button onclick="location.href='/exportar_pdf'" style="float: right;" 
-        {% if session['history'] and session['history']|length > 0 %} 
-            enabled 
-        {% else %} 
-            disabled 
-        {% endif %}>
-        Exportar
-    </button>
+        <table class="mi-tabla">
+            <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Resultado</th>
+            </tr>
+            {% for item in history %}
 
-    <table border="1">
-        <tr>
-            <th>Imagen</th>
-            <th>Nombre</th>
-            <th>Resultado</th>
-        </tr>
-        {% for item in history %}
-        <tr>
-            <td><img src="{{ item.file }}" width="90" height="90"></td>
-            <td>{{ item.name }}</td>
-            <td>{{ item.result }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    
-    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+            <tr>
+                <td><img src="{{ item.file }}" width="90" height="90"></td>
+                <td class="table-nombre-imagen">{{ item.name }}</td>
+                <td>{{ item.result }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    </div>
 </body>
 </html>
