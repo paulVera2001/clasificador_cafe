@@ -56,7 +56,7 @@ if not os.path.exists(download_folder):
 class PDF(FPDF):
     def header(self):
         self.set_font('Arial', 'B', 12)
-        self.cell(0, 10, 'Sistema Clasificador de Granos de Cafe', ln=True, align='C')
+        self.cell(0, 10, 'Sistema Inteligente Clasificador de Granos de Café', ln=True, align='C')
         self.cell(0, 10, 'Historial', ln=True, align='C')
         self.set_font('Arial', '', 11)
         self.cell(0, 5, f'Fecha actual: {datetime.now().strftime("%d/%m/%Y")}', ln=True, align='R')
