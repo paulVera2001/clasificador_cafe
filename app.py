@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session, jsonify, send_file, url_for, make_response
+from flask import Flask, render_template, request, session, jsonify, send_file
 from models.modelo_clasificador import predecir_clase
 from werkzeug.utils import secure_filename
 import shutil
