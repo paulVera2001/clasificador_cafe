@@ -37,9 +37,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }    
     if (btnClasificar) {
         btnClasificar.addEventListener("click", function () {
+            console.time("Tiempo de respuesta");
             const file = inputImagen.files[0];
             if (!file) return;
-    
+            
             const formData = new FormData();
             formData.append("file", file);
     
@@ -55,6 +56,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     resultadoTexto.style.display = "block";
                     resultadoTexto.textContent = data.resultado;
                     btnHistorial.removeAttribute("disabled");
+                    console.timeEnd("Tiempo de respuesta");
+                    console.log("Tiempo de respuesta:", data.tiempo_respuesta * 1000, "ms");
                 }
             })
             .catch(error => {

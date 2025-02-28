@@ -6,6 +6,7 @@ from pathlib import Path
 import os
 from fpdf import FPDF
 from datetime import datetime
+import time
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -23,6 +24,8 @@ def main():
 
 @app.route("/clasificar", methods=["POST"])
 def clasificar():
+    inicio = time.time()
+    
     file = request.files["file"]
     filename = secure_filename(file.filename)
     filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
@@ -33,7 +36,11 @@ def clasificar():
         session['history'] = []
     session['history'].append({'file': filepath, 'name': filename, 'result': resultado})
     session.modified = True
-    return jsonify({"resultado": resultado}), 200
+
+    fin = time.time()
+    tiempo_respuesta = fin - inicio
+    return jsonify({'resultado': resultado, 'tiempo_respuesta': tiempo_respuesta}), 200
+    #return jsonify({"resultado": resultado}), 200
 
 @app.route('/historial')
 def historial():
